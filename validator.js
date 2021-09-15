@@ -81,8 +81,13 @@ function Validator(options) {
                             break;
                         case 'checkbox':
                             if(!input.matches(':checked')) {
-                                values[input.name] = '';
-                                return values;
+                                if(!input.matches(':checked')) {
+                                    if(!values[input.name]) {
+                                        values[input.name] = '';
+                                    }
+                                    return values;
+                                }
+
                             }
                             if(!Array.isArray(values[input.name])) {
                                 values[input.name] = [];
@@ -127,7 +132,11 @@ function Validator(options) {
                 if(inputElement) {
                     //Xử lý trường hợp blur khỏi input
                     inputElement.onblur = function () {
-                        validate(inputElement, rule)
+                        validate(inputElement, rule);
+                    }
+
+                    inputElement.onchange = function () {
+                        validate(inputElement, rule);
                     }
                     
                     
@@ -151,7 +160,7 @@ Validator.isRequired = function (selector, message) {
     return {
         selector,
         test: function (value) {
-            return value ? undefined : message || 'Vui lòng nhập trường này';
+            return value !== null && value.toString().trim() ? undefined : message || 'Vui lòng nhập trường này';
         }
     }
 }
