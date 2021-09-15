@@ -61,15 +61,15 @@
                 <div class="form-group">
                     <label for="password_confirmation" class="form-label">Giới tính</label>
                     <div>
-                        <input name="gender" type="checkbox" value="male" class="form-control">
+                        <input name="gender" type="radio" value="male" class="form-control">
                         Nam
                     </div>
                     <div>
-                        <input name="gender" type="checkbox" value="female" class="form-control">
+                        <input name="gender" type="radio" value="female" class="form-control">
                         Nữ
                     </div>
                     <div>
-                        <input name="gender" type="checkbox" value="other" class="form-control">
+                        <input name="gender" type="radio" value="other" class="form-control">
                         Khác
                     </div>
                     <span class="form-message"></span>
@@ -86,13 +86,13 @@
                 formGroupSelector: '.form-group',
                 errorSelector: '.form-message',
                 rules: [
-                    Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                    Validator.isEmail('#email'),
-                    Validator.minLength('#password', 1),
-                    Validator.isRequired('#password_confirmation'),
+                    // Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                    // Validator.isEmail('#email'),
+                    // Validator.minLength('#password', 1),
+                    // Validator.isRequired('#password_confirmation'),
                     Validator.isRequired('#province'),
-                    Validator.isRequired('#avatar'),
-                    Validator.isRequired('input[name="gender"]'),
+                    // Validator.isRequired('#avatar'),
+                    // Validator.isRequired('input[name="gender"]'),
                     Validator.isConfirmed('#password_confirmation', function () { 
                         return document.querySelector('#form-1 #password').value;
                     }, 'Mật khẩu nhập lại không chính xác')
