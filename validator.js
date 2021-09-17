@@ -1,6 +1,8 @@
 // Đối tượng `Validator`
 function Validator(options) {
 
+    var selectorRules = {};
+
     function getParent(element, selector) {
         while (element.parentElement) {
             if (element.parentElement.matches(selector)) {
@@ -10,7 +12,6 @@ function Validator(options) {
         }
     }
 
-    var selectorRules = {};
 
     //Hàm thực hiện validate
     function validate(inputElement, rule) {
@@ -81,13 +82,10 @@ function Validator(options) {
                             break;
                         case 'checkbox':
                             if(!input.matches(':checked')) {
-                                if(!input.matches(':checked')) {
-                                    if(!values[input.name]) {
-                                        values[input.name] = '';
-                                    }
-                                    return values;
+                                if(!values[input.name]) {
+                                    values[input.name] = '';
                                 }
-
+                                return values;
                             }
                             if(!Array.isArray(values[input.name])) {
                                 values[input.name] = [];
